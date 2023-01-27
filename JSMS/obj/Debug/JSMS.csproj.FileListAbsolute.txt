@@ -1,0 +1,16 @@
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\bin\Debug\JSMS.exe.config
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\bin\Debug\JSMS.exe
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\bin\Debug\JSMS.pdb
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.csproj.AssemblyReference.cache
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.csproj.SuggestedBindingRedirects.cache
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.Flash.resources
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.Properties.Resources.resources
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.csproj.GenerateResource.cache
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.csproj.CoreCompileInputs.cache
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.exe
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.pdb
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.Login.resources
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.Products.resources
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\bin\Debug\Data\JSMS.mdb
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.Categories.resources
+C:\Users\vipul.belhekar\source\repos\JSMS\JSMS\obj\Debug\JSMS.Dashboard.resources
