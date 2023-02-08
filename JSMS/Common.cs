@@ -20,7 +20,7 @@ namespace JSMS
         public static string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
         public const string SelectText = "-- Select --";
 
-        #region ColorScheme
+        #region Color Theme
         public static bool IsDarkMode = false;
         public static Color MainColor = Color.FromArgb(26, 106, 149);
         public static Color MainColorDark = Color.FromArgb(17, 81, 115);
