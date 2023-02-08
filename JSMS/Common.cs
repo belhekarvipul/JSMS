@@ -20,13 +20,15 @@ namespace JSMS
         public static string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
         public const string SelectText = "-- Select --";
 
+        #region ColorScheme
         public static bool IsDarkMode = false;
         public static Color MainColor = Color.FromArgb(26, 106, 149);
         public static Color MainColorDark = Color.FromArgb(17, 81, 115);
         public static Color BackgroundColor = Color.FromArgb(119, 161, 183);
         public static Color BackgroundColorDark = Color.FromArgb(29, 44, 59);
         public static Color LabelColor = Color.White;
-        public static Color ButtonTextColor = Color.Black;
+        public static Color ButtonTextColor = Color.Black; 
+        #endregion
 
         public enum Roles
         {
