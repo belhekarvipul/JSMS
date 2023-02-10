@@ -38,7 +38,7 @@ namespace JSMS
             lblFormName.BackColor = btnBack.BackColor = Common.MainColor;
             btnNew.ForeColor = btnSave.ForeColor = btnDelete.ForeColor = Common.ButtonTextColor;
             panelTop.BackColor = panelSideBar.BackColor = panelFooter.BackColor = Common.BackgroundColorDark;
-            
+
             BackColor = txtCategory.BackColor = txtDescription.BackColor = dataGridCategories.BackgroundColor = Common.BackgroundColor;
             lblFormName.ForeColor = btnBack.ForeColor = lblResult.ForeColor = lblTime.ForeColor = lblId.ForeColor = lblCategoryId.ForeColor = lblId.ForeColor = lblName.ForeColor = lblDesc.ForeColor = txtCategory.ForeColor = txtDescription.ForeColor = Common.LabelColor;
         }
@@ -72,24 +72,27 @@ namespace JSMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var selectedRows = dataGridCategories.SelectedRows;
-            if (selectedRows.Count > 0)
+            if (Common.GetDeleteConfirmation())
             {
-
-                lblResult.Text = string.Empty;
-                int result = new DAL().DeleteCategory(int.Parse(selectedRows[0].Cells[0].Value.ToString()));
-
-                if (result > 0)
+                var selectedRows = dataGridCategories.SelectedRows;
+                if (selectedRows.Count > 0)
                 {
-                    Reset();
-                    lblResult.Text = "Category deleted successfully.";
-                    LoadCategories();
+
+                    lblResult.Text = string.Empty;
+                    int result = new DAL().DeleteCategory(int.Parse(selectedRows[0].Cells[0].Value.ToString()));
+
+                    if (result > 0)
+                    {
+                        Reset();
+                        lblResult.Text = "Category deleted successfully.";
+                        LoadCategories();
+                    }
+                    else
+                        lblResult.Text = "Failed to delete category.";
                 }
                 else
-                    lblResult.Text = "Failed to delete category.";
+                    lblResult.Text = "Please select a record.";
             }
-            else
-                lblResult.Text = "Please select a record.";
         }
 
         private void dataGridCategories_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

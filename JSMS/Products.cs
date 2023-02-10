@@ -47,24 +47,26 @@ namespace JSMS
 
         private void btnDelete_Click(object sender, System.EventArgs e)
         {
-            var selectedRows = dataGridProducts.SelectedRows;
-            if (selectedRows.Count > 0)
+            if (Common.GetDeleteConfirmation())
             {
-
-                lblResult.Text = string.Empty;
-                int result = new DAL().DeleteProduct(int.Parse(selectedRows[0].Cells[0].Value.ToString()));
-
-                if (result > 0)
+                var selectedRows = dataGridProducts.SelectedRows;
+                if (selectedRows.Count > 0)
                 {
-                    Reset();
-                    lblResult.Text = "Product deleted successfully.";
-                    LoadProducts();
+                    lblResult.Text = string.Empty;
+                    int result = new DAL().DeleteProduct(int.Parse(selectedRows[0].Cells[0].Value.ToString()));
+
+                    if (result > 0)
+                    {
+                        Reset();
+                        lblResult.Text = "Product deleted successfully.";
+                        LoadProducts();
+                    }
+                    else
+                        lblResult.Text = "Failed to delete product.";
                 }
                 else
-                    lblResult.Text = "Failed to delete product.";
+                    lblResult.Text = "Please select a record.";
             }
-            else
-                lblResult.Text = "Please select a record.";
         }
 
         private void dataGridProducts_DoubleClick(object sender, EventArgs e)

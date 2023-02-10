@@ -46,23 +46,26 @@ namespace JSMS
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var selectedRows = dataGridUsers.SelectedRows;
-            if (selectedRows.Count > 0)
+            if (Common.GetDeleteConfirmation())
             {
-                lblResult.Text = string.Empty;
-                int result = new DAL().DeleteUser(int.Parse(selectedRows[0].Cells[0].Value.ToString()));
-
-                if (result > 0)
+                var selectedRows = dataGridUsers.SelectedRows;
+                if (selectedRows.Count > 0)
                 {
-                    Reset();
-                    lblResult.Text = "User deleted successfully.";
-                    LoadUsers();
+                    lblResult.Text = string.Empty;
+                    int result = new DAL().DeleteUser(int.Parse(selectedRows[0].Cells[0].Value.ToString()));
+
+                    if (result > 0)
+                    {
+                        Reset();
+                        lblResult.Text = "User deleted successfully.";
+                        LoadUsers();
+                    }
+                    else
+                        lblResult.Text = "Failed to delete user.";
                 }
                 else
-                    lblResult.Text = "Failed to delete user.";
+                    lblResult.Text = "Please select a record.";
             }
-            else
-                lblResult.Text = "Please select a record.";
         }
 
         private void dataGridUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

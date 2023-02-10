@@ -27,7 +27,7 @@ namespace JSMS
         public static Color BackgroundColor = Color.FromArgb(119, 161, 183);
         public static Color BackgroundColorDark = Color.FromArgb(29, 44, 59);
         public static Color LabelColor = Color.White;
-        public static Color ButtonTextColor = Color.Black; 
+        public static Color ButtonTextColor = Color.Black;
         #endregion
 
         public enum Roles
@@ -69,6 +69,14 @@ namespace JSMS
                 ddlMetal.Items.Add(metal);
             }
             ddlMetal.SelectedIndex = 0;
+        }
+
+        public static bool GetDeleteConfirmation()
+        {
+            return MessageBox.Show("Do you really want to delete selected record?", "Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes;
         }
     }
 }
