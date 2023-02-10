@@ -28,7 +28,7 @@ namespace JSMS
         {
             if (!string.IsNullOrEmpty(txtLoginId.Text) && !string.IsNullOrEmpty(txtPassword.Text))
             {
-                int result = new DAL().SaveUser(int.Parse(lblUserId.Text), txtName.Text, txtLoginId.Text, txtPassword.Text, ddlRole.Text);
+                int result = new DAL().SaveUser(int.Parse(lblUserId.Text), txtName.Text, txtLoginId.Text, Utils.Encrypt(txtPassword.Text), ddlRole.Text);
                 if (result > 0)
                 {
                     Reset();
@@ -74,10 +74,11 @@ namespace JSMS
             if (selectedRows.Count > 0)
             {
                 lblResult.Text = string.Empty;
+                chkShowPassword.Checked = false;
                 lblUserId.Text = selectedRows[0].Cells[0].Value.ToString();
                 txtName.Text = selectedRows[0].Cells["Name"].Value.ToString();
                 txtLoginId.Text = selectedRows[0].Cells["Login Id"].Value.ToString();
-                txtPassword.Text = selectedRows[0].Cells["Password"].Value.ToString();
+                txtPassword.Text = Utils.Decrypt(selectedRows[0].Cells["Password"].Value.ToString());
                 ddlRole.SelectedIndex = ddlRole.FindString(selectedRows[0].Cells["Role"].Value.ToString());
             }
         }
@@ -129,6 +130,7 @@ namespace JSMS
             txtPassword.Text = String.Empty;
             ddlRole.SelectedIndex = 0;
             lblResult.Text = string.Empty;
+            chkShowPassword.Checked = false;
         }
 
         private void LoadRoles()

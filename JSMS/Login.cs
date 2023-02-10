@@ -35,14 +35,16 @@ namespace JSMS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtLoginId.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text))
+            string loginId = txtLoginId.Text;
+            string password = txtPassword.Text;
+            if (!string.IsNullOrWhiteSpace(loginId) && !string.IsNullOrWhiteSpace(password))
             {
                 string role = Common.Roles.Admin.ToString();
 
                 if (radioSales.Checked)
                     role = Common.Roles.Salesman.ToString();
 
-                DataSet dsUser = new DAL().Login(txtLoginId.Text, txtPassword.Text, role);
+                DataSet dsUser = new DAL().Login(loginId, Utils.Encrypt(password), role);
                 if (dsUser != null && dsUser.Tables.Count > 0 && dsUser.Tables[0].Rows.Count > 0)
                 {
                     Common.LoggedInUserId = Convert.ToInt32(dsUser.Tables[0].Rows[0]["UserId"]);
