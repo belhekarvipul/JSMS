@@ -490,6 +490,8 @@
             this.dataGridProducts.Size = new System.Drawing.Size(1360, 145);
             this.dataGridProducts.TabIndex = 1;
             this.dataGridProducts.TabStop = false;
+            this.dataGridProducts.Sorted += new System.EventHandler(this.dataGridProducts_Sorted);
+            this.dataGridProducts.DoubleClick += new System.EventHandler(this.dataGridProducts_DoubleClick);
             // 
             // Products
             // 
