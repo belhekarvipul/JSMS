@@ -50,7 +50,10 @@ namespace JSMS
                     Common.LoggedInUserId = Convert.ToInt32(dsUser.Tables[0].Rows[0]["UserId"]);
                     Common.LoggedInUserName = dsUser.Tables[0].Rows[0]["Name"].ToString();
                     Hide();
-                    new Dashboard().Show();
+                    if (role == Common.Roles.Admin.ToString())
+                        new Dashboard().Show();
+                    else
+                        new Sales().Show();
                 }
                 else
                 {
