@@ -43,11 +43,6 @@ namespace JSMS
             Platinum
         }
 
-        public static void LogException(Exception ex)
-        {
-            throw ex;
-        }
-
         public static void LoadCategories(ComboBox ddlCategory)
         {
             DataSet ds = new DAL().GetCategories();

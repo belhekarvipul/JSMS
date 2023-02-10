@@ -27,7 +27,7 @@ namespace JSMS.Data
                 }
                 catch (Exception ex)
                 {
-                    Common.LogException(ex);
+                    Utils.LogException(ex);
                 }
                 finally
                 {
@@ -53,7 +53,7 @@ namespace JSMS.Data
                 }
                 catch (Exception ex)
                 {
-                    Common.LogException(ex);
+                    Utils.LogException(ex);
                 }
                 return result;
             }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,6 +11,21 @@ namespace JSMS
     public static class Utils
     {
         private static string EncryptionKey = new Regex("[^a-zA-Z0-9]").Replace(Common.ApplicationName, "");
+        private static readonly ILog log = LogManager.GetLogger(typeof(Utils));
+
+        static Utils()
+        {
+            if (!Directory.Exists("Logs"))
+            {
+                Directory.CreateDirectory("Logs");
+            }
+            XmlConfigurator.Configure();
+        }
+
+        public static void LogException(Exception ex)
+        {
+            log.Error("Error Message : " + ex.Message + Environment.NewLine + "Stace Trace : " + ex.StackTrace);
+        }
 
         public static string Encrypt(string inputString)
         {

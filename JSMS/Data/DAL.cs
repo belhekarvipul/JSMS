@@ -17,7 +17,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return dsProducts;
         }
@@ -46,7 +46,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
 
             return result;
@@ -62,7 +62,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return result;
         }
@@ -79,7 +79,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return dsCategories;
         }
@@ -104,7 +104,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
 
             return result;
@@ -120,7 +120,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return result;
         }
@@ -137,7 +137,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return dsUser;
         }
@@ -152,7 +152,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return dsUsers;
         }
@@ -179,7 +179,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
 
             return result;
@@ -195,7 +195,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return result;
         }
@@ -216,7 +216,7 @@ namespace JSMS.Data
             }
             catch (Exception ex)
             {
-                Common.LogException(ex);
+                Utils.LogException(ex);
             }
             return dsCurrentStocks;
         }
