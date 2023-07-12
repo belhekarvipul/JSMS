@@ -12,7 +12,7 @@ namespace JSMS
             InitializeComponent();
             InitializeColors();
             Text = Common.ApplicationShortName + ": Categories";
-            dateTimer.Start();
+            timerDateTime.Start();
             Reset();
             LoadCategories();
         }
@@ -23,6 +23,7 @@ namespace JSMS
             DataSet ds = new DAL().GetCategories();
             dataGridCategories.DataSource = ds.Tables[0];
         }
+
         private void Reset()
         {
             lblCategoryId.Text = "0";
@@ -34,13 +35,17 @@ namespace JSMS
 
         private void InitializeColors()
         {
-            panelSideBarMain.BackColor = Common.MainColorDark;
-            lblFormName.BackColor = btnBack.BackColor = Common.MainColor;
+            pTobBar.BackColor = pFormSideBar.BackColor = pFooter.BackColor = Common.BackgroundColorDark;
+            pTitleSideBar.BackColor = Common.MainColorDark;
+            pTitleName.BackColor = pTitleBackButton.BackColor = Common.MainColor;
             btnNew.ForeColor = btnSave.ForeColor = btnDelete.ForeColor = Common.ButtonTextColor;
-            panelTop.BackColor = panelSideBar.BackColor = panelFooter.BackColor = Common.BackgroundColorDark;
-
-            BackColor = txtCategory.BackColor = txtDescription.BackColor = dataGridCategories.BackgroundColor = Common.BackgroundColor;
-            lblFormName.ForeColor = btnBack.ForeColor = lblResult.ForeColor = lblTime.ForeColor = lblId.ForeColor = lblCategoryId.ForeColor = lblId.ForeColor = lblName.ForeColor = lblDesc.ForeColor = txtCategory.ForeColor = txtDescription.ForeColor = Common.LabelColor;
+            lblFormName.ForeColor = btnBack.ForeColor = lblResult.ForeColor = lblTime.ForeColor =
+                lblId.ForeColor = lblCategoryId.ForeColor = lblName.ForeColor = lblDesc.ForeColor = 
+                txtCategory.ForeColor = txtDescription.ForeColor =
+                Common.LabelColor;
+            tableLayoutPanel1.BackColor = dataGridCategories.BackgroundColor =
+                txtCategory.BackColor = txtDescription.BackColor =
+                Common.BackgroundColor;
         }
         #endregion
 
@@ -112,7 +117,7 @@ namespace JSMS
             Reset();
         }
 
-        private void dateTimer_Tick(object sender, EventArgs e)
+        private void timerDateTime_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString("dd/MMM/yyyy - hh:mm:ss tt");
         }

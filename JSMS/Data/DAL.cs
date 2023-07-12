@@ -29,18 +29,18 @@ namespace JSMS.Data
             {
                 string query;
                 if (productId > 0)
-                    query = $"Update Products SET " +
-                        $"Name = '{name}', " +
-                        $"Description = '{description}', " +
-                        $"Price = '{price}', " +
-                        $"Stock = '{stock}', " +
-                        $"Category = {categoryId}, " +
-                        $"Metal = '{metal}', " +
-                        $"LastModifiedBy = {Common.LoggedInUserId}, LastModifiedDate = {DateTime.Now.ToShortDateString()}" +
-                        $" WHERE ProductId = {productId}";
+                    query = "Update Products SET " +
+                        "Name = '" + name + "', " +
+                        "Description = '" + description + "', " +
+                        "Price = '" + price + "', " +
+                        "Stock = '" + stock + "', " +
+                        "Category = " + categoryId + ", " +
+                        "Metal = '" + metal + "', " +
+                        "LastModifiedBy = " + Common.LoggedInUserId + ", LastModifiedDate = " + DateTime.Now.ToShortDateString() +
+                        " WHERE ProductId = " + productId;
                 else
                     query = "INSERT INTO Products (Name, Description, Price, Stock, Category, Metal, LastModifiedBy, LastModifiedDate) VALUES " +
-                        $"('{name}','{description}','{price}','{stock}',{categoryId},'{metal}', {Common.LoggedInUserId}, {DateTime.Now.ToShortDateString()})";
+                        "('" + name + "','" + description + "','" + price + "','" + stock + "'," + categoryId + ",'" + metal + "', " + Common.LoggedInUserId + ", " + DateTime.Now.ToShortDateString() + ")";
 
                 result = DBHelper.Execute(query);
             }
@@ -91,14 +91,14 @@ namespace JSMS.Data
             {
                 string query;
                 if (categoryId > 0)
-                    query = $"UPDATE Categories SET " +
-                        $"Name = '{name}', " +
-                        $"Description = '{description}', " +
-                        $"LastModifiedBy = {Common.LoggedInUserId}, LastModifiedDate = {DateTime.Now.ToShortDateString()} " +
-                        $"WHERE CategoryId = {categoryId}";
+                    query = "UPDATE Categories SET " +
+                        "Name = '" + name + "', " +
+                        "Description = '" + description + "', " +
+                        "LastModifiedBy = " + Common.LoggedInUserId + ", LastModifiedDate = " + DateTime.Now.ToShortDateString() + " " +
+                        "WHERE CategoryId = " + categoryId + "";
                 else
-                    query = $"INSERT INTO Categories (Name, Description, LastModifiedBy, LastModifiedDate) VALUES " +
-                        $"('{name}','{description}', {Common.LoggedInUserId}, {DateTime.Now.ToShortDateString()})";
+                    query = "INSERT INTO Categories (Name, Description, LastModifiedBy, LastModifiedDate) VALUES " +
+                        "('" + name + "','" + description + "', " + Common.LoggedInUserId + ", " + DateTime.Now.ToShortDateString() + ")";
 
                 result = DBHelper.Execute(query);
             }
@@ -132,7 +132,7 @@ namespace JSMS.Data
             DataSet dsUser = new DataSet();
             try
             {
-                string query = $"SELECT TOP 1 Name, UserId FROM Users WHERE LoginId = '{loginId}' AND [Password] = '{password}' AND Role = '{role}'";
+                string query = "SELECT TOP 1 Name, UserId FROM Users WHERE LoginId = '" + loginId + "' AND [Password] = '" + password + "' AND Role = '" + role + "'";
                 dsUser = DBHelper.ExecuteSelect(query);
             }
             catch (Exception ex)
@@ -164,16 +164,16 @@ namespace JSMS.Data
             {
                 string query;
                 if (userId > 0)
-                    query = $"UPDATE Users SET " +
-                        $"Name = '{name}', " +
-                        $"LoginId = '{loginId}', " +
-                        $"[Password] = '{password}', " +
-                        $"Role = '{role}', " +
-                        $"LastModifiedBy = {Common.LoggedInUserId}, LastModifiedDate = {DateTime.Now.ToShortDateString()} " +
-                        $"WHERE UserId = {userId}";
+                    query = "UPDATE Users SET " +
+                        "Name = '" + name + "', " +
+                        "LoginId = '" + loginId + "', " +
+                        "[Password] = '" + password + "', " +
+                        "Role = '" + role + "', " +
+                        "LastModifiedBy = " + Common.LoggedInUserId + ", LastModifiedDate = " + DateTime.Now.ToShortDateString() + " " +
+                        "WHERE UserId = " + userId + "";
                 else
-                    query = $"INSERT INTO Users (Name, LoginId, [Password], Role, LastModifiedBy, LastModifiedDate) VALUES " +
-                        $"('{name}','{loginId}','{password}','{role}', {Common.LoggedInUserId}, {DateTime.Now.ToShortDateString()})";
+                    query = "INSERT INTO Users (Name, LoginId, [Password], Role, LastModifiedBy, LastModifiedDate) VALUES " +
+                        "('" + name + "','" + loginId + "','" + password + "','" + role + "', " + Common.LoggedInUserId + ", " + DateTime.Now.ToShortDateString() + ")";
 
                 result = DBHelper.Execute(query);
             }
@@ -201,6 +201,118 @@ namespace JSMS.Data
         }
         #endregion
 
+        #region Customer
+        public DataSet GetCustomers()
+        {
+            DataSet dsCustomers = new DataSet();
+            try
+            {
+                string query = "SELECT CustomerId, CustomerName, ContactNumber, Address, PanNumber FROM Customers ORDER BY CustomerName";
+                dsCustomers = DBHelper.ExecuteSelect(query);
+            }
+            catch (Exception ex)
+            {
+                Utils.LogException(ex);
+            }
+            return dsCustomers;
+        }
+
+        public int SaveCustomer(int customerId, string customerName, string contactNumber, string address, string pan)
+        {
+            int result = 0;
+            try
+            {
+                string query;
+                if (customerId > 0)
+                    query = "UPDATE Customers SET " +
+                        "CustomerName = '" + customerName + "', " +
+                        "ContactNumber = '" + contactNumber + "', " +
+                        "Address = '" + address + "', " +
+                        "PanNumber = '" + pan + "', " +
+                        "LastModifiedBy = " + Common.LoggedInUserId + ", LastModifiedDate = " + DateTime.Now.ToShortDateString() + " " +
+                        "WHERE CustomerId = " + customerId + "";
+                else
+                    query = "INSERT INTO Customers (CustomerName, ContactNumber, Address, PanNumber, LastModifiedBy, LastModifiedDate) VALUES " +
+                        "('" + customerName + "','" + contactNumber + "','" + address + "','" + pan + "'," + Common.LoggedInUserId + ", " + DateTime.Now.ToShortDateString() + ")";
+
+                result = DBHelper.Execute(query);
+            }
+            catch (Exception ex)
+            {
+                Utils.LogException(ex);
+            }
+
+            return result;
+        }
+
+        public int DeleteCustomer(int customerId)
+        {
+            int result = 0;
+            try
+            {
+                string query = "DELETE FROM Customers WHERE CustomerId = " + customerId;
+                result = DBHelper.Execute(query);
+            }
+            catch (Exception ex)
+            {
+                Utils.LogException(ex);
+            }
+            return result;
+        }
+        #endregion
+
+        #region Kitty Registration
+        public DataSet GetKittyRegistration()
+        {
+            DataSet dsRegistrations = new DataSet();
+            try
+            {
+                string query = "SELECT KR.RegistrationId, C.CustomerName, C.ContactNumber, KR.Amount, KR.StartDate, KR.EndDate, KR.TotalAmount, KR.ToalGoldBooked " +
+                "FROM KittyRegistration KR INNER JOIN Customers C ON KR.CustomerId = C.CustomerId " +
+                "ORDER BY C.CustomerName";
+                dsRegistrations = DBHelper.ExecuteSelect(query);
+            }
+            catch (Exception ex)
+            {
+                Utils.LogException(ex);
+            }
+            return dsRegistrations;
+        }
+
+        public int SaveKittyRegistration(int customerId, string amount, string StartDate, string EndDate, string goldBooked)
+        {
+            int result = 0;
+            try
+            {
+                string query = "INSERT INTO KittyRegistration (CustomerId, Amount, StartDate, EndDate, TotalAmount, ToalGoldBooked, LastModifiedBy, LastModifiedDate) VALUES " +
+                        "(" + customerId + ",'" + amount + "', '" + StartDate + "', '" + EndDate + "', " + amount + ", " + goldBooked + ", " + Common.LoggedInUserId + ", " + DateTime.Now.ToShortDateString() + ")";
+
+                result = DBHelper.Execute(query);
+            }
+            catch (Exception ex)
+            {
+                Utils.LogException(ex);
+            }
+
+            return result;
+        }
+
+        public int DeleteKittyRegistrations(int registrationId)
+        {
+            int result = 0;
+            try
+            {
+                string query = "DELETE FROM KittyRegistration WHERE RegistrationId = " + registrationId;
+                result = DBHelper.Execute(query);
+            }
+            catch (Exception ex)
+            {
+                Utils.LogException(ex);
+            }
+            return result;
+        }
+        #endregion
+
         #region Charts
         public DataSet GetCurrentStocksData(string metal, string CategoryId)
         {
@@ -209,9 +321,9 @@ namespace JSMS.Data
             {
                 string query = "SELECT P.Name, P.Stock AS Stock FROM Products P " +
                     "LEFT OUTER JOIN Categories C ON P.Category = C.CategoryId " +
-                    $"WHERE ('{metal}' = '0' OR P.Metal = '{metal}') " +
-                    $"AND ('{CategoryId}' = '0' OR P.Category = {int.Parse(CategoryId)}) " +
-                    $"ORDER BY P.Name";
+                    "WHERE ('" + metal + "' = '0' OR P.Metal = '" + metal + "') " +
+                    "AND ('" + CategoryId + "' = '0' OR P.Category = " + int.Parse(CategoryId) + ") " +
+                    "ORDER BY P.Name";
                 dsCurrentStocks = DBHelper.ExecuteSelect(query);
             }
             catch (Exception ex)

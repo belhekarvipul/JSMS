@@ -68,6 +68,14 @@ namespace JSMS
             }
         }
 
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowPassword.Checked)
+                txtPassword.PasswordChar = char.MinValue;
+            else
+                txtPassword.PasswordChar = '*';
+        }
+        
         private void dataGridUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var selectedRows = dataGridUsers.SelectedRows;
@@ -82,15 +90,7 @@ namespace JSMS
                 ddlRole.SelectedIndex = ddlRole.FindString(selectedRows[0].Cells["Role"].Value.ToString());
             }
         }
-
-        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkShowPassword.Checked)
-                txtPassword.PasswordChar = char.MinValue;
-            else
-                txtPassword.PasswordChar = '*';
-        }
-
+     
         private void dataGridUsers_Sorted(object sender, EventArgs e)
         {
             Reset();
@@ -146,16 +146,17 @@ namespace JSMS
 
         private void InitializeColors()
         {
-            panelSideBarMain.BackColor = Common.MainColorDark;
-            lblFormName.BackColor = btnBack.BackColor = Common.MainColor;
+            pTobBar.BackColor = pFormSideBar.BackColor = pFooter.BackColor = Common.BackgroundColorDark;
+            pTitleSideBar.BackColor = Common.MainColorDark;
+            pTitleName.BackColor = pTitleBackButton.BackColor = Common.MainColor;
             btnNew.ForeColor = btnSave.ForeColor = btnDelete.ForeColor = Common.ButtonTextColor;
-            panelTop.BackColor = panelSideBar.BackColor = panelFooter.BackColor = Common.BackgroundColorDark;
             lblFormName.ForeColor = btnBack.ForeColor = lblResult.ForeColor = lblTime.ForeColor =
-                lblFormName.ForeColor = label2.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = lblUserId.ForeColor
-                 = txtLoginId.ForeColor = txtName.ForeColor = txtPassword.ForeColor = ddlRole.ForeColor = chkShowPassword.ForeColor
-                = Common.LabelColor;
-
-            BackColor = txtName.BackColor = txtLoginId.BackColor = txtPassword.BackColor = ddlRole.BackColor = dataGridUsers.BackgroundColor = Common.BackgroundColor;
+                label2.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = lblUserId.ForeColor = 
+                txtLoginId.ForeColor = txtName.ForeColor = txtPassword.ForeColor = ddlRole.ForeColor = chkShowPassword.ForeColor =
+                Common.LabelColor;
+            tableLayoutPanel1.BackColor = dataGridUsers.BackgroundColor =
+                txtName.BackColor = txtLoginId.BackColor = txtPassword.BackColor = ddlRole.BackColor =
+                Common.BackgroundColor;
         }
         #endregion
     }

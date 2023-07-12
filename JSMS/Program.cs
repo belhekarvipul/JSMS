@@ -15,7 +15,16 @@ namespace JSMS
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Login());
+
+                if (Common.IsDevEnv == "1")
+                {
+                    Common.LoggedInUserId = 1;
+                    Common.LoggedInUserName = "Admin";
+                    Application.Run(new Dashboard());
+                }
+                else {
+                    Application.Run(new Flash());
+                }                
             }
             catch (Exception ex)
             {

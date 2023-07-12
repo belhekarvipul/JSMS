@@ -69,7 +69,7 @@ namespace JSMS
             }
         }
 
-        private void dataGridProducts_DoubleClick(object sender, EventArgs e)
+        private void dataGridProducts_CellDoubleClick(object sender, EventArgs e)
         {
             var selectedRows = dataGridProducts.SelectedRows;
             if (selectedRows.Count > 0)
@@ -136,16 +136,17 @@ namespace JSMS
 
         private void InitializeColors()
         {
-            panelSideBarMain.BackColor = Common.MainColorDark;
-            lblFormName.BackColor = btnBack.BackColor = Common.MainColor;
+            pTobBar.BackColor = pFormSideBar.BackColor = pFooter.BackColor = Common.BackgroundColorDark;
+            pTitleSideBar.BackColor = Common.MainColorDark;
+            pTitleName.BackColor = pTitleBackButton.BackColor = Common.MainColor;
             btnNew.ForeColor = btnSave.ForeColor = btnDelete.ForeColor = Common.ButtonTextColor;
-            panelTop.BackColor = panelSideBar.BackColor = panelFooter.BackColor = Common.BackgroundColorDark;
             lblFormName.ForeColor = btnBack.ForeColor = lblResult.ForeColor = lblTime.ForeColor =
-                label1.ForeColor = lblProductId.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = label8.ForeColor
-                 = txtProductName.ForeColor = txtProductDescription.ForeColor = ddlCategories.ForeColor = ddlMetal.ForeColor = txtPrice.ForeColor = txtStock.ForeColor
-                = Common.LabelColor;
-
-            BackColor = txtProductName.BackColor = txtProductDescription.BackColor = ddlCategories.BackColor = ddlMetal.BackColor = txtPrice.BackColor = txtStock.BackColor = dataGridProducts.BackgroundColor = panel7.BackColor = Common.BackgroundColor;
+                label1.ForeColor = lblProductId.ForeColor = label3.ForeColor = label4.ForeColor = label5.ForeColor = label6.ForeColor = label7.ForeColor = label8.ForeColor =
+                txtProductName.ForeColor = txtProductDescription.ForeColor = ddlCategories.ForeColor = ddlMetal.ForeColor = txtPrice.ForeColor = txtStock.ForeColor =
+                Common.LabelColor;
+            tableLayoutPanel1.BackColor = dataGridProducts.BackgroundColor =
+                txtProductName.BackColor = txtProductDescription.BackColor = ddlCategories.BackColor = ddlMetal.BackColor = txtPrice.BackColor = txtStock.BackColor =
+                Common.BackgroundColor;
         }
         #endregion
     }

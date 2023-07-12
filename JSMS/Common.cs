@@ -18,6 +18,7 @@ namespace JSMS
         public static string ApplicationName = ConfigurationManager.AppSettings["ApplicationName"];
         public static string ApplicationShortName = ConfigurationManager.AppSettings["ApplicationShortName"];
         public static string ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+        public static string IsDevEnv = ConfigurationManager.AppSettings["IsDevEnv"];
         public const string SelectText = "-- Select --";
 
         #region Color Theme
@@ -55,6 +56,7 @@ namespace JSMS
             ddlCategory.DisplayMember = "Name";
             ddlCategory.ValueMember = "ID";
         }
+
         public static void LoadMetal(ComboBox ddlMetal)
         {
             ddlMetal.Items.Clear();

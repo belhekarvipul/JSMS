@@ -101,6 +101,24 @@ namespace JSMS
             Hide();
         }
 
+        private void btnCustomers_Click(object sender, EventArgs e)
+        {
+            new Customers().Show();
+            Hide();
+        }
+
+        private void btnKittyRegistration_Click(object sender, EventArgs e)
+        {
+            new KittyRegistration().Show();
+            Hide();
+        }
+
+        private void btnKittyInstallment_Click(object sender, EventArgs e)
+        {
+            new KittyInstallment().Show();
+            Hide();
+        }
+
         private void chkDarkMode_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDarkMode.Checked)
@@ -128,6 +146,6 @@ namespace JSMS
             }
 
             InitializeColors();
-        }
+        }             
     }
 }
